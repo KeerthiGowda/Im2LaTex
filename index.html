@@ -1,6 +1,132 @@
 <!DOCTYPE html>
 <html lang="en'>
 <head>
+	<meta cahrset="utf-8" />
+	<title>Im2Latex </title>
+	<meta name = "viewport" content-"width-divice-width, intialscale=1.0">
+	
+	<style>
+		body{
+			background: #F1F0D1
+			font-family: Verdan, Tahoma, Arial, sans-serif;
+			font-size: 18px;
+			overflow: auto;
+		}
+		h1,h2,h3{
+			text-align:center;
+			padding-left: 5%;
+			color: #878E63;
+		}
+		p{
+			padding: 2%;
+			color: #878E63;
+		}
+		
+		img{
+			margin: auto;
+			width: 10%;
+			text-align: center:
+			max-width: 50%;
+			height: auto;
+			width: 1080px;
+		}
+		
+		#wrapper{
+			margin: auto;
+			max-width: 1080px;
+			width: 98%;
+			background: #FEFBE8;
+			border: 1px solid #878E63;
+			border-radius: 2px;
+			box-shadow: 0 0 10px 0px rgba(12, 3, 25, 0.8);
+		}
+		
+	</style>
+	
+	<head>
+		<body>
+			<div id="wrapper">
+				<!-- <div id="VT">
+				<p> Computer Vision</p>
+				</div> -->
+				<header>
+					<img src="logo2.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+				</header>
+				
+				<nav>
+					<ul>
+						<li class = 'active'><a href = "#">Home</a></li>
+						<li><a href = "#">Home2</a></li>
+						<li><a href = "#">Home3</a></li>
+						<li><a href = "#">Home4</a></li> 
+					</ul>   
+				</nav>
+				
+				<div class="banner">
+					<img src="Teaser_2.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+				</div>
+				
+				<section class "leftcol">
+					<p style="text-indent: 50px;">Typically most people find it comfortable to derive and think mathematics while writing either on paper or on a white-board. To be able to communicate these mathematical ideas with other people, it is beneficial to typeset it using standard tools like LaTex. However, transferring the content into this format can be cumbersome and need considerable human effort and time.</p>
+					
+					<p style="text-indent: 50px;">Hence, we propose to build an automated system that converts the mathematical equations in an image into LaTex using the techniques of computer vision and machine learning for pattern recognition</p>
+				</section>
+				
+				<aside class="sidebar">
+					<div class="therapy">
+						<img src="blockDiagram.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
+					</div>
+				</aside>
+				
+				<div class="section">
+					<h3>Pre-processing</h3>
+					<img src="preProcessing.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
+					<p align="justify">
+					<b>Canny edges:</b> Edges present in the image are found using canny edge detection technique. <br>
+					<b>Hough transform:</b> The lines corresponding to the clip-board boundary are determined from these edges using Hough transformation.<br>
+					<b>Boundary:</b> The four corner points are found by determining the intersection of the boundary lines. <br>
+					<b>Homography:</b> The four points so determined are used to correct the perspective distortion using Homography.<br>
+					<b>Binary image:</b> The image is then binarized with a threshold on intensity. <br>
+					<b>Corners:</b> Harris features are detected on this image to obtain the cluster center of the text.<br>
+					<b>Image cropping:</b> Image is cropped around this cluster center to get the text box. <br>
+					<b>Connected components:</b> The text is segmented and each character is extracted from this text box<br></p>
+				</div>
+				
+				<div class="section">
+					<h3>Classification</h3>
+					<img src="classification.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
+					<p>
+					Canny edges: Edges present in the image are found using canny edge detection technique. 
+					Hough transform: The lines corresponding to the clip-board boundary are determined from these edges using Hough transformation.
+					Boundary: The four corner points are found by determining the intersection of the boundary lines. 
+					Homography: The four points so determined are used to correct the perspective distortion using Homography.
+					Binary image: The image is then binarized with a threshold on intensity. 
+					Corners: Harris features are detected on this image to obtain the cluster center of the text.
+					Image cropping: Image is cropped around this cluster center to get the text box. 
+					Connected components: The text is segmented and each character is extracted from this text box
+					</p>
+				</div>
+				
+				<footer>
+					<div class="section"
+						<p>Contact</p>
+						<p><b>Keerthi Gowda</b><br>
+						keerthis@vt.edu
+						540-449-8940</p>
+					</div>
 
-</head>
+					<div class="section"
+						<ul>
+							<li><a href = "https://www.vt.edu"><img src="vt.jpg" width = "120 heigh = "1080" alt="VT" title="Image to LaTex converter"/></li>
+						</ul>
+					</div>
+				</footer>
+			</div>	
+		</body>
+	
+	</head>
+	
+	
+
+
 </html>
