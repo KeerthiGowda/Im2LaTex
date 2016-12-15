@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en'>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <head>
 	<meta cahrset="utf-8" />
 	<title>Im2Latex </title>
@@ -7,39 +10,110 @@
 	
 	<style>
 		body{
-			background: #F1F0D1
-			font-family: Verdan, Tahoma, Arial, sans-serif;
+			background: #5F5C5C
+			font-family: Verdana, Tahoma, Arial, sans-serif;
 			font-size: 18px;
 			overflow: auto;
 		}
 		h1,h2,h3{
-			text-align:center;
-			padding-left: 5%;
-			color: #878E63;
+			text-align:left;
+			padding-left: 10px;
+			color: #E09E9E;
 		}
 		p{
+			text-align: justify;
 			padding: 2%;
-			color: #878E63;
-		}
-		
-		img{
-			margin: auto;
-			width: 10%;
-			text-align: center:
-			max-width: 50%;
-			height: auto;
-			width: 1080px;
+			color: #FFFFFF;
 		}
 		
 		#wrapper{
 			margin: auto;
-			max-width: 1080px;
+			max-width: 1200px;
 			width: 98%;
-			background: #FEFBE8;
+			background: #000000	;
 			border: 1px solid #878E63;
 			border-radius: 2px;
 			box-shadow: 0 0 10px 0px rgba(12, 3, 25, 0.8);
 		}
+		
+		img{
+			display: block;
+			margin:auto;
+			height: auto;
+			width: 1200px;
+		}
+		
+		#callout{
+			width: 100%;
+			height: auto;
+			background: #878E63;
+			overflow: hidden:
+		}
+		#callout p{
+			text-align: right;
+			font-size: 13px;
+			padding: 0.1% 5px 0 0;
+			color: #F1F0D1;
+		}
+		#callout p a{
+			color:#F1F0D1;
+			text-decoration: none;
+		}
+		header{
+			width: 96%;
+			min-heigh: 125px;
+			padding: 5px:
+			text-align: center;
+		}
+		nav ul{
+			list-style: none;
+			margin: 0;
+			padding-left: 170px;
+		}
+		
+		nav ul li{
+			float:left;
+			border: none;
+			width: 25%;
+		}
+		nav ul li a {
+			background: #000000;
+			display: inline;
+			padding: 5% 12%;
+			font-weight: bold;
+			font-size: 18px;
+			color: #FFFFFF;
+			text-decoration: none;
+			text-align: center;
+		}
+		
+		nav ul li a:hover, a{				
+			background-color: #8D0606;
+			color: #F1F0D1;
+		}
+		
+		.banner img{
+			width: 100%;
+			border-top: 1px solid #878E63;
+			border-bottom: 1px solid #878E63;
+		}
+		
+		.leftcol{
+			width: 55%;
+			folat: left;
+			margin:-2%	 1% 1%;
+		}
+		
+		.sidebar{
+			width: 40%;
+			float: right;
+			margin: 1%;
+			text-align: center;
+		}
+		
+		tab1{
+			padding-left: 4em;
+		}	
 		
 	</style>
 	
@@ -49,38 +123,77 @@
 				<!-- <div id="VT">
 				<p> Computer Vision</p>
 				</div> -->
-				<header>
-					<img src="logo2.JPG" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
-				</header>
 				
+				<header>
+					<img src="logo3.jpg" width="500" height ="auto" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+				</header>
+				<br>
 				<nav>
 					<ul>
-						<li class = 'active'><a href = "#">Home</a></li>
-						<li><a href = "#">Home2</a></li>
-						<li><a href = "#">Home3</a></li>
-						<li><a href = "#">Home4</a></li> 
+						<li class = 'active'><a href = "#">About</a></li>
+						<li><a href = "http://www.iapr-tc11.org/mediawiki/index.php/CROHME:_Competition_on_Recognition_of_Online_Handwritten_Mathematical_Expressions">Dataset</a></li>
+						<li><a href = "#">Image Dataset</a></li>
+						<li><a href = "Im2Latex_Poster.pdf">Poster</a></li> 
 					</ul>   
 				</nav>
 				
-				<div class="banner">
-					<img src="Teaser_2.JPG" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
-				</div>
+				<br>
 				
 				<section class "leftcol">
-					<p style="text-indent: 50px;">Typically most people find it comfortable to derive and think mathematics while writing either on paper or on a white-board. To be able to communicate these mathematical ideas with other people, it is beneficial to typeset it using standard tools like LaTex. However, transferring the content into this format can be cumbersome and need considerable human effort and time.</p>
-					
-					<p style="text-indent: 50px;">Hence, we propose to build an automated system that converts the mathematical equations in an image into LaTex using the techniques of computer vision and machine learning for pattern recognition</p>
+					<p>Typically most people find it comfortable to derive and think mathematics while writing either on paper or on a white-board. To be able to communicate these mathematical ideas with other people, it is beneficial to typeset it using standard tools like LaTex. However, transferring the content into this format can be cumbersome and need considerable human effort and time.<br><br>Hence, we propose to build an automated system that converts the mathematical equations in an image into LaTex using the techniques of computer vision and machine learning for pattern recognition</p>
+
 				</section>
 				
-				<aside class="sidebar">
-					<div class="therapy">
-						<img src="blockDiagram.JPG" alt="Block Diagram" title="Image to LaTex converter"/> 
-					</div>
-				</aside>
+				<div class="banner">
+					<img class="mySlides w3-animate-fading" src="Teaser_2.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img class="mySlides w3-animate-fading" src="Teaser_3.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img class="mySlides w3-animate-fading" src="Teaser_4.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img class="mySlides w3-animate-fading" src="Teaser_5.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+				</div>
 				
+				<script>
+					var myIndex = 0;
+					carousel();
+
+					function carousel() {
+						var i;
+						var x = document.getElementsByClassName("mySlides");
+						for (i = 0; i < x.length; i++) {
+						   x[i].style.display = "none";  
+						}
+						myIndex++;
+						if (myIndex > x.length) {myIndex = 1}    
+						x[myIndex-1].style.display = "block";  
+						setTimeout(carousel, 5000);    
+					}
+				</script>
+				
+				<br>
+				<h1><b> Block Diagram</b></h1>
+					<div class="therapy">
+						<img src="blockDiagram3.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
+					</div>
+				
+				<p>
+					<b>Perspective Correction</b><br> <tab1></tab1> The image of the handwritten mathematical expression
+						can be taken by the user in multiple angles. To achieve better accuracy, we need to
+						correct the angle to obtain the frontal-view.<br><br>
+					<b>Binarization</b><br> <tab1></tab1>  This corrected image needs to be binarized before passing it into the symbol classifier. This step is challenging because the method needs to be robust to
+						uneven lighting conditions.<br><br>
+					<b>Segmentation</b><br> <tab1></tab1>  Next, we need to process the binarized image and draw bounding boxes around each symbol.<br><br>
+					<b>Symbol Classification</b><br> <tab1></tab1> The segmented symbols are now passed into a symbol
+						classifier that is trained using binary input images to output the correct symbols. We
+						plan to compare SVM classifiers using traditional features like HOG and convolutional
+						neural networks for this task.<br><br>
+					<b> Structure Recognition</b><br> <tab1></tab1> To be able to decode mathematical expressions, we need to understand the relation between adjacent symbols { for example, superscripts,
+						subscripts, fraction and so on. Using these relations, we will be able to generate the
+						latex code.<br><br>
+						All the steps are discussed in detailed in the following sections.
+						<br>
+				</p>
 				<div class="section">
-					<h3>Pre-processing</h3>
-					<img src="preProcessing.JPG" alt="Block Diagram" title="Image to LaTex converter"/> 
+					<h1><b>Pre-processing</b></h1>
+					<img src="preProcessing2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					<p align="justify">
 					<b>Canny edges:</b> Edges present in the image are found using canny edge detection technique. <br>
 					<b>Hough transform:</b> The lines corresponding to the clip-board boundary are determined from these edges using Hough transformation.<br>
@@ -94,7 +207,7 @@
 				
 				<div class="section">
 					<h3>Classification</h3>
-					<img src="classification.JPG" alt="Block Diagram" title="Image to LaTex converter"/> 
+					<img src="classification2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					<p>
 					Canny edges: Edges present in the image are found using canny edge detection technique. 
 					Hough transform: The lines corresponding to the clip-board boundary are determined from these edges using Hough transformation.
@@ -117,7 +230,7 @@
 
 					<div class="section"
 						<ul>
-							<li><a href = "https://www.vt.edu"><img src="vt.jpg" width = "120 heigh = "1080" alt="VT" title="Image to LaTex converter"/></li>
+						<!--	<li><a href = "https://www.vt.edu"><img src="vt.jpg" alt="VT" title="Image to LaTex converter"/ class="VT_Logo" ></li> -->
 						</ul>
 					</div>
 				</footer>
