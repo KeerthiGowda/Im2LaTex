@@ -10,17 +10,30 @@
 	
 	<style>
 		body{
+			margin: 0px;
 			background: #5F5C5C
 			font-family: Verdana, Tahoma, Arial, sans-serif;
 			font-size: 18px;
 			overflow: auto;
 		}
-		h1,h2,h3{
+		h1,h2,h3,h4{
+			margin:0px;
 			text-align:left;
-			padding-left: 10px;
 			color: #E0E0E0;
 		}
+		h2{
+			padding-left: 10px;
+		}
+		
+		h3{
+			padding-left: 20px;
+		}
+		h4{
+			padding-left: 30px;
+		}
+		
 		p{
+			margin:0px;
 			text-align: justify;
 			padding: 2%;
 			color: #000000;
@@ -175,7 +188,7 @@
 				</script>
 				
 				<br>
-				<h3><b> Block Diagram</b></h3>
+				<h2><b> Block Diagram</b></h2>
 					<div class="therapy">
 						<img src="blockDiagram3.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					</div>
@@ -198,7 +211,7 @@
 						<br>
 				</p>
 				<div class="section">
-					<h3><b>Pre-processing</b></h3>
+					<h2><b>Pre-processing</b></h2>
 					<img src="preProcessing2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					<p align="justify">
 					<b>Canny edges:</b> Edges present in the image are found using canny edge detection technique. <br>
@@ -212,7 +225,7 @@
 				</div>
 				
 				<div class="section">
-					<h3><b>Classification</b></h3>
+					<h2><b>Classification</b></h2>
 					<img src="classification2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					<p>
 					Canny edges: Edges present in the image are found using canny edge detection technique. 
@@ -221,15 +234,42 @@
 				
 				
 				<div class="section">
-					<h3><b>Details</b></h3>
-					<p>
-					XXXXXXXXXXXXXXXXXXXXXXXXX
+					<h2><b>Details</b></h2>
+						
+						<h3><b>Training</b></h3>
+							<p>jfakkkkkkkkkkkkkkkkkkkkk</p>
+						
+							<h4><b>Data Collection</b></h4>
+							<p>Chrome dataset consists of .inkml files. These files contains 
+								the information of all the stokes in the symbol with their time stamp.
 
-					</p>
+								<br><br>First step towards our data generation was to convert these inkml files to 
+								images. We create a python script to extract the inkml data to a CSV file. This
+								csv file consisted of all the strokes for a symbol and its labels. Using this CSV file, 
+								we generated images using matlab. 
+
+								<br><br>Dataset cleanup: Once we had the symbol images and their labels, we observed that 
+								there were lot of errors in the dataset. Some of the symbols were misclassified, and some of them were junk data. Hence we cleaned up the dataset to have minimal training errors. All the images of the symbols and their corresponding labels have been uploaded under "Image Dataset" in this page. Also, we have uploaded the python script  and matlab code that was used to generate the data.
+							</p>
+							
+							<h4><b>SVM</b></h4>
+							<p> avds;vajdsvadsjv</p>
+							
+							<h4><b>CNN</b></h4>
+							<p> vadsjipdajoadvi;idv</p>
+							
+							<h4><b>Place Holder</b></h4>
+							<p>vajdovoiavjaio; </p>
+
+						<h3><b>Testing</b></h3>
+						<p> </p>
+
+							
+							
 				</div>
 				
 				<div class="section">
-					<h3><b>Results</b></h3>
+					<h2><b>Results</b></h2>
 					<p>
 					Image was successfully converted to Latex code with levels of accuracy as follows:
 					<br>Using SVM – 68.83 %
@@ -239,14 +279,14 @@
 				</div>
 				
 				<div class="section">
-					<h3><b>Comments / Feedback</b></h3>
+					<h2><b>Comments / Feedback</b></h2>
 					<p>
 					Canny edges: Edges present in the image are found using canny edge detection technique. 
 					</p>
 				</div>
 				
 				<div class="section">
-					<h3><b>Future work</b></h3>
+					<h2><b>Future work</b></h2>
 					<p>
 					Equation structure can be determined by using the relative location of bounding boxes in the pre-processed image.
 					</p>
