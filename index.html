@@ -18,19 +18,19 @@
 		h1,h2,h3{
 			text-align:left;
 			padding-left: 10px;
-			color: #E09E9E;
+			color: #E0E0E0;
 		}
 		p{
 			text-align: justify;
 			padding: 2%;
-			color: #FFFFFF;
+			color: #000000;
 		}
 		
 		#wrapper{
 			margin: auto;
 			max-width: 1200px;
 			width: 98%;
-			background: #000000	;
+			background: #7F7F7F	;
 			border: 1px solid #878E63;
 			border-radius: 2px;
 			box-shadow: 0 0 10px 0px rgba(12, 3, 25, 0.8);
@@ -113,7 +113,13 @@
 		
 		tab1{
 			padding-left: 4em;
-		}	
+		}
+		tab2{
+			padding-left: 2em;
+		}		
+		tab3{
+			padding-left: 1em;
+		}
 		
 	</style>
 	
@@ -132,7 +138,7 @@
 					<ul>
 						<li class = 'active'><a href = "#">About</a></li>
 						<li><a href = "http://www.iapr-tc11.org/mediawiki/index.php/CROHME:_Competition_on_Recognition_of_Online_Handwritten_Mathematical_Expressions">Dataset</a></li>
-						<li><a href = "#">Image Dataset</a></li>
+						<li><a href = "https://github.com/KeerthiGowda/Im2LaTex/tree/gh-pages/Dataset">Image Dataset</a></li>
 						<li><a href = "Im2Latex_Poster.pdf">Poster</a></li> 
 					</ul>   
 				</nav>
@@ -169,30 +175,30 @@
 				</script>
 				
 				<br>
-				<h1><b> Block Diagram</b></h1>
+				<h3><b> Block Diagram</b></h3>
 					<div class="therapy">
 						<img src="blockDiagram3.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					</div>
 				
 				<p>
-					<b>Perspective Correction</b><br> <tab1></tab1> The image of the handwritten mathematical expression
+					<b>Perspective Correction</b><br>The image of the handwritten mathematical expression
 						can be taken by the user in multiple angles. To achieve better accuracy, we need to
 						correct the angle to obtain the frontal-view.<br><br>
-					<b>Binarization</b><br> <tab1></tab1>  This corrected image needs to be binarized before passing it into the symbol classifier. This step is challenging because the method needs to be robust to
+					<b>Binarization</b><br>This corrected image needs to be binarized before passing it into the symbol classifier. This step is challenging because the method needs to be robust to
 						uneven lighting conditions.<br><br>
-					<b>Segmentation</b><br> <tab1></tab1>  Next, we need to process the binarized image and draw bounding boxes around each symbol.<br><br>
-					<b>Symbol Classification</b><br> <tab1></tab1> The segmented symbols are now passed into a symbol
+					<b>Segmentation</b><br>Next, we need to process the binarized image and draw bounding boxes around each symbol.<br><br>
+					<b>Symbol Classification</b><br> The segmented symbols are now passed into a symbol
 						classifier that is trained using binary input images to output the correct symbols. We
 						plan to compare SVM classifiers using traditional features like HOG and convolutional
 						neural networks for this task.<br><br>
-					<b> Structure Recognition</b><br> <tab1></tab1> To be able to decode mathematical expressions, we need to understand the relation between adjacent symbols { for example, superscripts,
+					<b> Structure Recognition</b><br> To be able to decode mathematical expressions, we need to understand the relation between adjacent symbols { for example, superscripts,
 						subscripts, fraction and so on. Using these relations, we will be able to generate the
 						latex code.<br><br>
 						All the steps are discussed in detailed in the following sections.
 						<br>
 				</p>
 				<div class="section">
-					<h1><b>Pre-processing</b></h1>
+					<h3><b>Pre-processing</b></h3>
 					<img src="preProcessing2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					<p align="justify">
 					<b>Canny edges:</b> Edges present in the image are found using canny edge detection technique. <br>
@@ -206,26 +212,51 @@
 				</div>
 				
 				<div class="section">
-					<h3>Classification</h3>
+					<h3><b>Classification</b></h3>
 					<img src="classification2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
 					<p>
 					Canny edges: Edges present in the image are found using canny edge detection technique. 
-					Hough transform: The lines corresponding to the clip-board boundary are determined from these edges using Hough transformation.
-					Boundary: The four corner points are found by determining the intersection of the boundary lines. 
-					Homography: The four points so determined are used to correct the perspective distortion using Homography.
-					Binary image: The image is then binarized with a threshold on intensity. 
-					Corners: Harris features are detected on this image to obtain the cluster center of the text.
-					Image cropping: Image is cropped around this cluster center to get the text box. 
-					Connected components: The text is segmented and each character is extracted from this text box
+					</p>
+				</div>
+				
+				
+				<div class="section">
+					<h3><b>Details</b></h3>
+					<p>
+					XXXXXXXXXXXXXXXXXXXXXXXXX
+
+					</p>
+				</div>
+				
+				<div class="section">
+					<h3><b>Results</b></h3>
+					<p>
+					Image was successfully converted to Latex code with levels of accuracy as follows:
+					<br>Using SVM – 68.83 %
+					<br>Using CNN - 92.19 %
+
+					</p>
+				</div>
+				
+				<div class="section">
+					<h3><b>Comments / Feedback</b></h3>
+					<p>
+					Canny edges: Edges present in the image are found using canny edge detection technique. 
+					</p>
+				</div>
+				
+				<div class="section">
+					<h3><b>Future work</b></h3>
+					<p>
+					Equation structure can be determined by using the relative location of bounding boxes in the pre-processed image.
 					</p>
 				</div>
 				
 				<footer>
 					<div class="section"
-						<p>Contact</p>
-						<p><b>Keerthi Gowda</b><br>
-						keerthis@vt.edu
-						540-449-8940</p>
+						<p><b>Contact </b><br><b>Vikram Chandrashekar<tab1></tab1> Sujay Yadwadkar <tab1></tab1>Ashwin Kalyan<tab1></tab1>Keerthi Gowda</b><br>
+						vikramc@vt.edu <tab1></tab1><tab1></tab1><tab3></tab3> sujayr91@vt.edu <tab1></tab1><tab3></tab3> ashwinkv@vt.edu <tab2></tab2><tab3></tab3>keerthis@vt.edu
+						</p>
 					</div>
 
 					<div class="section"
