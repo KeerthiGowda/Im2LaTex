@@ -72,6 +72,12 @@
 			height: auto;
 			width: 300px;
 		}
+		.diff2{
+			display: block;
+			margin:auto;
+			height: auto;
+			width: 800px;
+		}
 		
 		#callout{
 			width: 100%;
@@ -164,6 +170,7 @@
 					<img src="logo7.jpg" width="500" height ="auto" alt="Image to LaTex converter" title="Image to LaTex converter" class="first" />
 				</header>
 				<br>
+				
 				<nav>
 					<ul>
 						<li class = 'active'><a href = "#">About</a></li>
@@ -177,15 +184,15 @@
 				<br>
 				
 				<section class "leftcol">
-					<p>Typically most people find it comfortable to derive and think mathematics while writing either on paper or on a white-board. To be able to communicate these mathematical ideas with other people, it is beneficial to typeset it using standard tools like LaTex. However, transferring the content into this format can be cumbersome and need considerable human effort and time.<br><br>Hence, we propose to build an automated system that converts the mathematical equations in an image into LaTex using the techniques of computer vision and machine learning for pattern recognition</p>
+					<p>Typically most people find it comfortable to derive and think mathematics while writing either on paper or on a white-board. To be able to communicate these mathematical ideas with other people, it is beneficial to typeset it using standard tools like LaTex. However, transferring the content into this format can be cumbersome and need considerable human effort and time.<br><br>Hence, we propose to build an automated system that converts the mathematical equations in an image into LaTex using the techniques of computer vision and machine learning for pattern recognition.</p>
 
 				</section>
 				
 				<div class="banner">
-					<img class="mySlides w3-animate-fading" src="Teaser_2.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
-					<img class="mySlides w3-animate-fading" src="Teaser_3.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
-					<img class="mySlides w3-animate-fading" src="Teaser_4.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
-					<img class="mySlides w3-animate-fading" src="Teaser_5.jpg" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img class="mySlides w3-animate-fading" src="Teaser_2.jpg" height="250px" width="auto" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img class="mySlides w3-animate-fading" src="Teaser_3.jpg" height="250px" width="auto" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img class="mySlides w3-animate-fading" src="Teaser_4.jpg" height="250px" width="auto" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img class="mySlides w3-animate-fading" src="Teaser_5.jpg" height="250px" width="auto" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
 				</div>
 				
 				<script>
@@ -220,9 +227,9 @@
 					<b>Segmentation</b><br>Next, we need to process the binarized image and draw bounding boxes around each symbol.<br><br>
 					<b>Symbol Classification</b><br> The segmented symbols are now passed into a symbol
 						classifier that is trained using binary input images to output the correct symbols. We
-						plan to compare SVM classifiers using traditional features like HOG and convolutional
+						implemented SVM classifier using features like HOG and we also implemented convolutional
 						neural networks for this task.<br><br>
-					<b> Structure Recognition</b><br> To be able to decode mathematical expressions, we need to understand the relation between adjacent symbols { for example, superscripts,
+					<b> Structure Recognition</b><br> To be able to decode mathematical expressions, we need to understand the relation between adjacent symbols, for example, superscripts,
 						subscripts, fraction and so on. Using these relations, we will be able to generate the
 						latex code.<br><br>
 						All the steps are discussed in detailed in the following sections.
@@ -246,14 +253,13 @@
 					<h2><b>Classification</b></h2>
 					<img src="classification2.jpg" alt="Block Diagram" title="Image to LaTex converter" class="first"/> 
 					<p>
-					Canny edges: Edges present in the image are found using canny edge detection technique. 
-					</p>
+					We are using CNN classifier to classify the symbols in mathematical expression.</p>
 				</div>
 				
 				
 				<div class="section">
-					<h2><b>Details</b></h2>
-						<tab3>Any classification problem has two steps, training and testing. We had trained the classifer for 57 symbols.
+					<h2><b>Approach</b></h2>
+						<p>Any classification problem has two steps, training and testing. We had trained the classifer for 57 symbols.</p>
 						<h3><b>Training</b></h3>
 							<p> Following processes were done for training of the symbol dataset.
 							</p>
@@ -283,29 +289,28 @@
 <span>Dropouts:</span> With CNN overfitting seems to be a problem which may reduce accuracy. We used &lsquo;drop-out&rsquo; method to avoid overfitting. In this technique we set the output of each hidden node to 0.5 randomly and train the classifier. When the output of a node is &lsquo;0&rsquo;, it does not participate either in feed forward or the backward propagation path. This forces the other nodes to learn more complicated and generalised feature instead of relying on the presence of a previous node to give it a certain input. The propagation path takes a different path in every pass and this helps in making the nodes non-specialized for the classification. This has a downside that the training time increases roughly by twice but helps increase test accuracy by not overfitting the nodes. During the testing stage, no nodes are dropped, so to compensate for the increased node count as compared to training stage, we weigh the output of each node by half to get the final output. The training was done on GPUs and it took approximately four hours.</p>
 
 <p><span">Stochastic Gradient Descent:</span> This technique is used to update the weights of the nodes. This is helpful because, using a gradient descent would need entire dataset to be in the memory at a time while calculating the gradient. But here we pick a random data member and compute the gradient and update the weights accordingly. The weights are updated in the direction of the gradient of the loss function. The update process converges when the weights value do not change any more. It has been shown that stochastic gradient descent can converge faster in some cases when compared to the normal gradient descent and also it achieves the global minimum.</p>
-<p style="text-align: justify;">&nbsp;</p>
 
 						<h3><b>Testing</b></h3>
 						<p>
 						
-						Testing is divided in to following,</p>
+						Testing is divided in to following:</p>
 <h4><b>I.	Testing only the Classifier Performance:</b></h4> 
 <p><tab2>Here the performance of SVM/CNN classifiers are measured by providing the images of the symbol from the dataset as input. This gives classification accuracy for the existing dataset.</p>
 <h4><b>II.	Testing Im2Latex System</b></h4>
 <p>Second part of testing involves taking an image of mathematical equation written on a board or editor and then feed to Im2Latex System as input. In real world this would be the use case. The entire flow from capturing image to latex output is explained below. </p> 
 <p><b>1. Input:</b><br><br>
-The input to Im2Latex system is an image consisting of a mathematical equation. We have implemented two mechanisms for input image capturing, i.e. through webcam and another way is by taking snapshot of drawing written in an editor. For the first method, where webcam is used, the user takes in a picture of handwritten equation. The capturing of image and further processing is integrated within MATLAB. For the second case, a screen snapshot of a drawing editor is taken and is processed in MATLAB. </p>
+The input to Im2Latex system is an image consisting of a mathematical equation. We have implemented two mechanisms for input image capturing, i.e. through webcam and another way is by taking snapshot of drawing written in an editor. For the first method, where webcam is used, the user captures a picture of handwritten equation. The capturing of image and further processing is integrated within MATLAB. For the second case, a screen snapshot of a drawing editor (source code given under canvas tab) is taken and is processed in MATLAB. </p>
 <p><b>2.	Image Rectification:</b><br><br>
-When the input image to the system is from a webcam, then most of the  times there would be perspective distortion, i.e image is not in perpendicular upright view. If this image is directly fed to symbol extraction and classification, the symbols would be distorted and leads to misclassification. Hence we do perspective correction by using Homography technique.  The details of the pre-processing to remove perspective distortion is discussed below.<br><br>
+When the input image to the system is from a webcam, then most of the  times there would be perspective distortion. If this image is directly fed to symbol extraction and classification, the symbols would be distorted and leads to misclassification. Hence we do perspective correction by using Homography technique.  The details of the pre-processing to remove perspective distortion is discussed below.<br><br>
 •	We consider that mathematical equations are written on a white board or a paper with rectangular boundary. So the technique to correct perspective distortion would be to find the rectangular corners of the board or paper. If the image has perspective distortion, then geometrically these would not be corners of a rectangle. Our next step would be to get an approximation of these corners which would actually fit corners of a rectangle. This is done by considering the highest dimensions(length/breadth) of the distorted rectangle. To determine the corners of the rectangle we use Hough Transform to find horizontal and vertical line segments in an image. The intersection of horizontal and vertical lines would be considered as rectangle corners.<br><br>
 
-•	One we know the mapping of corners between distorted rectangle and a geometrically correct rectangle, we determine the Homography Matrix which can be solved with 4 corresponding pairs of x,y coordinates.<br><br>
-•	The homography transform is applied to entire image to remove the perspective distortion. Output of this step would be an image which looks like image captured from upright perpendicular view.</p>
+•	Once we know the mapping from the corners of distorted rectangle to the geometrically correct rectangle, we determine the Homography Matrix which can be solved with 4 corresponding pairs of x,y coordinates.<br><br>
+•	The homography transform is applied to entire image to remove the perspective distortion.</p>
 <img src="homography.jpg"  class="diff"/> 
 					
 
 <p><b>3.	Text Region Identification:</b><br><br>
-It is important to get the region where text is present in an image. This is needed for robust binarization which will be discussed further. To extract the region of text, we find harris corners and estimate is centroid of the corner positions. Text portion is extracted by cropping image around harris corner centroid with 2-3 standard deviation in x and y direction.</p>
+It is important to get the region where text is present in an image. This is needed for robust binarization which will be discussed further. To extract the region of text, we find harris corners and estimate the centroid of the corner positions. Text portion is extracted by cropping image around harris corner centroid with 2-3 standard deviation in x and y direction.</p>
 
 <p><b>4.	Binarization and Segmentation:</b><br><br>
 The image containing text is then binarized by choosing automated threshold. Segmentation is done with the help of connected components. Connected component analysis takes in input text image and gives out a label matrix where the pixel belong to particular letter/symbols would get the same labels. Next a bounding box is drawn across each symbols and each symbol is extracted and resized to 64x64 image.</p>
@@ -321,11 +326,6 @@ The output of the classification would be class labels to which the input symbol
 <p><b>7.	Final Ouput:</b><br><br>
 Once the Latex code is generated, it is sent to Latex compiler and the output is displayed as  a Latex document which contains the mathematical equation translated to LaTex standard.</p>
 
-
-
-
-						
-						
 						
 						
 						</p>
@@ -335,26 +335,30 @@ Once the Latex code is generated, it is sent to Latex compiler and the output is
 				</div>
 				
 				<div class="section">
-					<h2><b>Results</b></h2>
+					<h2><b>Experiments and results</b></h2>
 					<p>
 					Image was successfully converted to Latex code with levels of accuracy as follows:
 					<br>Using SVM – 68.83 %
 					<br>Using CNN - 92.19 %
-
 					</p>
+					<img src="inout.jpg"  class="diff2"/> 
+					
 				</div>
 				
 				<div class="section">
 					<h2><b>Comments / Feedback</b></h2>
 					<p>
-					Canny edges: Edges present in the image are found using canny edge detection technique. 
+					Currently we have trained our classifier by converting the image to binary form. Some information could be lost during this process. So, it would have been better if the classfier was trained using the original image.
 					</p>
 				</div>
 				
 				<div class="section">
-					<h2><b>Future work</b></h2>
+					<h2><b>Conclusion and future work</b></h2>
 					<p>
-					Equation structure can be determined by using the relative location of bounding boxes in the pre-processed image.
+					We have implemented an automated system which can take an image of handwritten mathematical equation and convert it to latex code.
+					
+					<br><br>Equation structure can be determined by using the relative location of bounding boxes in the pre-processed image.
+					This project can be extended to process the online / classroom video background notes to digital notes. 
 					</p>
 				</div>
 				
@@ -373,14 +377,14 @@ Once the Latex code is generated, it is sent to Latex compiler and the output is
 				
 				
 				<footer>
-					<div class="section"
-						<p><b><tab3>Contact </b><br><tab3><b>Vikram Chandrashekar<tab1></tab1> Sujay Yadwadkar <tab1></tab1>Ashwin Kalyan<tab1></tab1>Keerthi Gowda</b><br>
+					<div class="section">
+						<p><b>Contact </b><br><tab3><b>Vikram Chandrashekar<tab1></tab1> Sujay Yadwadkar <tab1></tab1>Ashwin Kalyan<tab1></tab1>Keerthi Gowda</b><br>
 						<tab3>vikramc@vt.edu <tab1></tab1><tab1></tab1><tab3></tab3> sujayr91@vt.edu <tab1></tab1><tab3></tab3> ashwinkv@vt.edu <tab2></tab2><tab3></tab3>keerthis@vt.edu
 						</p>
 					</div>
 
 					<div>
-						<p> Wall paper credits: http://wallpapersafari.com/w/2WXiwe/</p>
+						 Wall paper credits: http://wallpapersafari.com/w/2WXiwe/
 					</div>
 					<div class="section"
 						<ul>
