@@ -104,7 +104,7 @@
 		nav ul{
 			list-style: none;
 			margin: 0;
-			padding-left: 60px;
+			padding-left: 0px;
 		}
 		
 		nav ul li{
@@ -114,10 +114,10 @@
 		}
 		nav ul li a {
 			background: #202020;
-			display: inline;
+			display: block;
 			padding: 5% 12%;
 			font-weight: bold;
-			font-size: 18px;
+			font-size: 15px;
 			color: #AAAAAA;
 			text-decoration: none;
 			text-align: center;
@@ -270,7 +270,7 @@
 							<p> Following processes were done for training of the symbol dataset.
 							</p>
 						
-							<h4><b>Data Collection</b></h4>
+							<h4><b>I. Data Collection</b></h4>
 							<p>Chrome dataset consists of .inkml files. These files contains 
 								the information of all the stokes in the symbol with their time stamp.
 
@@ -283,12 +283,12 @@
 								there were lot of errors in the dataset. Some of the symbols were misclassified, and some of them were junk data. Hence we cleaned up the dataset to have minimal training errors. All the images of the symbols and their corresponding labels have been uploaded under "Processed Dataset" in this page. Also, we have uploaded the python script  and matlab code that was used to generate the data.
 							</p>
 							
-							<h4><b>SVM</b></h4>
+							<h4><b>II. SVM</b></h4>
 							<p>We train a linear SVM on conventional HOG features.</p>
 							
 							
 							
-<h4><b>Convolution Neural Network (CNN)</b></h4>
+<h4><b>III. Convolution Neural Network (CNN)</b></h4>
 <p>We trained a CNN [1] with 3 convolution layers and 2 linear layers. This included dropout regularization [2] and stochastic gradient descent method.</p>
 
 <p>
