@@ -11,7 +11,7 @@
 	<style>
 		body{
 			margin: 0px;
-			background: #5F5C5C
+			background: #E0E0E0
 			font-family: Verdana, Tahoma, Arial, sans-serif;
 			font-size: 18px;
 			overflow: auto;
@@ -19,7 +19,7 @@
 		h1,h2,h3,h4{
 			margin:0px;
 			text-align:left;
-			color: #E0E0E0;
+			color: #9b4337;
 		}
 		h2{
 			padding-left: 10px;
@@ -36,14 +36,14 @@
 			margin:0px;
 			text-align: justify;
 			padding: 2%;
-			color: #000000;
+			color: #AAAAAA;
 		}
 		
 		#wrapper{
 			margin: auto;
 			max-width: 1200px;
 			width: 98%;
-			background: #7F7F7F	;
+			background: #202020;
 			border: 1px solid #878E63;
 			border-radius: 2px;
 			box-shadow: 0 0 10px 0px rgba(12, 3, 25, 0.8);
@@ -59,17 +59,17 @@
 		#callout{
 			width: 100%;
 			height: auto;
-			background: #878E63;
-			overflow: hidden:
+			background: #202020;
+			overflow: hidden;
 		}
 		#callout p{
 			text-align: right;
 			font-size: 13px;
 			padding: 0.1% 5px 0 0;
-			color: #F1F0D1;
+			color: #AAAAAA;
 		}
 		#callout p a{
-			color:#F1F0D1;
+			color:#AAAAAA;
 			text-decoration: none;
 		}
 		header{
@@ -81,28 +81,28 @@
 		nav ul{
 			list-style: none;
 			margin: 0;
-			padding-left: 170px;
+			padding-left: 60px;
 		}
 		
 		nav ul li{
 			float:left;
 			border: none;
-			width: 25%;
+			width: 20%;
 		}
 		nav ul li a {
-			background: #000000;
+			background: #202020;
 			display: inline;
 			padding: 5% 12%;
 			font-weight: bold;
 			font-size: 18px;
-			color: #FFFFFF;
+			color: #AAAAAA;
 			text-decoration: none;
 			text-align: center;
 		}
 		
 		nav ul li a:hover, a{				
-			background-color: #8D0606;
-			color: #F1F0D1;
+			background-color: #505050;
+			color: #A0A0A0;
 		}
 		
 		.banner img{
@@ -153,6 +153,7 @@
 						<li><a href = "http://www.iapr-tc11.org/mediawiki/index.php/CROHME:_Competition_on_Recognition_of_Online_Handwritten_Mathematical_Expressions">Dataset</a></li>
 						<li><a href = "https://github.com/KeerthiGowda/Im2LaTex/tree/gh-pages/Dataset">Image Dataset</a></li>
 						<li><a href = "Im2Latex_Poster.pdf">Poster</a></li> 
+						<li><a href = "https://github.com/KeerthiGowda/Im2LaTex/tree/gh-pages/canvas">Canvas</a></li>
 					</ul>   
 				</nav>
 				
@@ -235,15 +236,16 @@
 				
 				<div class="section">
 					<h2><b>Details</b></h2>
-						
+						<tab3>Any classification problem has two steps, training and testing. We had trained the classifer for 57 symbols.
 						<h3><b>Training</b></h3>
-							<p>jfakkkkkkkkkkkkkkkkkkkkk</p>
+							<p> Following processes were done for training of the symbol dataset.
+							</p>
 						
 							<h4><b>Data Collection</b></h4>
 							<p>Chrome dataset consists of .inkml files. These files contains 
 								the information of all the stokes in the symbol with their time stamp.
 
-								<br><br>First step towards our data generation was to convert these inkml files to 
+								<br><br>First step towards our data collection was to convert these inkml files to 
 								images. We create a python script to extract the inkml data to a CSV file. This
 								csv file consisted of all the strokes for a symbol and its labels. Using this CSV file, 
 								we generated images using matlab. 
@@ -253,16 +255,19 @@
 							</p>
 							
 							<h4><b>SVM</b></h4>
-							<p> avds;vajdsvadsjv</p>
+							<p>We train a linear SVM on conventional HOG features.</p>
 							
 							<h4><b>CNN</b></h4>
-							<p> vadsjipdajoadvi;idv</p>
+							<p>We train a Conv neural network[1] with three convolutional layers followed by two linear layers to perform a #class-way classification.We use dropout regularization[2] and conventional SGD to train the network. We use torch (hyper link) to train all models.</p>
 							
 							<h4><b>Place Holder</b></h4>
 							<p>vajdovoiavjaio; </p>
 
 						<h3><b>Testing</b></h3>
-						<p> </p>
+						<p>We tested in two ways, first using the training data and then on the real time data. We used 90% of the data to train the classifer and 10% of the data to test the accuracy of the classifier. The results of this testing is presented in the results section.<br>
+						To do real time testing, we implemented the following two methods, <br>
+						1. Webcam in the laptop to capture the image<br>
+						2. Built an html canvas page where we can write the equation using mouse (source code of this is in the canvas tab). We created a custom sctipt to take a screen shot of the drawn image and send it to matlab.</p>
 
 							
 							
@@ -292,10 +297,24 @@
 					</p>
 				</div>
 				
+				<div class="section">
+					<h2><b>References</b></h2>
+					<p>
+					[1]	A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet classification with deep convolutional
+						neural networks. In Advances in Neural Information Processing Systems 25, pages
+						1106–1114, 2012. <br>
+					[2]	Dropout: A Simple Way to Prevent Neural Networks from Overfitting by Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever and Ruslan Salakhutdinov.<br>
+					
+					[3] http://ivc.univ-nantes.fr/CROHME/datasets.php<br>
+					[4] http://www.isical.ac.in/~crohme/CROHME_tasks2.html
+					</p>
+				</div>
+				
+				
 				<footer>
 					<div class="section"
-						<p><b>Contact </b><br><b>Vikram Chandrashekar<tab1></tab1> Sujay Yadwadkar <tab1></tab1>Ashwin Kalyan<tab1></tab1>Keerthi Gowda</b><br>
-						vikramc@vt.edu <tab1></tab1><tab1></tab1><tab3></tab3> sujayr91@vt.edu <tab1></tab1><tab3></tab3> ashwinkv@vt.edu <tab2></tab2><tab3></tab3>keerthis@vt.edu
+						<p><b><tab3>Contact </b><br><tab3><b>Vikram Chandrashekar<tab1></tab1> Sujay Yadwadkar <tab1></tab1>Ashwin Kalyan<tab1></tab1>Keerthi Gowda</b><br>
+						<tab3>vikramc@vt.edu <tab1></tab1><tab1></tab1><tab3></tab3> sujayr91@vt.edu <tab1></tab1><tab3></tab3> ashwinkv@vt.edu <tab2></tab2><tab3></tab3>keerthis@vt.edu
 						</p>
 					</div>
 
