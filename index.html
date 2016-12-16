@@ -10,25 +10,36 @@
 	
 	<style>
 		body{
-			margin: 0px;
-			background: #E0E0E0
+			 margin-top: 0px;
+			 margin-right: 0px;
+			 margin-bottom: 0px;
+			 margin-left: 0px;
+			background-image: url("red.jpg");
+			overflow: hidden;
 			font-family: Verdana, Tahoma, Arial, sans-serif;
 			font-size: 18px;
 			overflow: auto;
 		}
+		
 		h1,h2,h3,h4{
 			margin:0px;
 			text-align:left;
 			color: #9b4337;
 		}
+		h1{
+			font-size: 10em;
+		}
 		h2{
+			font-size: 2em;
 			padding-left: 10px;
 		}
 		
 		h3{
+			font-size: 1.5em;
 			padding-left: 20px;
 		}
 		h4{
+			font-size: 1.3em;
 			padding-left: 30px;
 		}
 		
@@ -42,18 +53,24 @@
 		#wrapper{
 			margin: auto;
 			max-width: 1200px;
-			width: 98%;
 			background: #202020;
-			border: 1px solid #878E63;
-			border-radius: 2px;
+			width: 98%;
+			<!--border: 1px solid #878E63;
+			border-radius: 2px;-->
 			box-shadow: 0 0 10px 0px rgba(12, 3, 25, 0.8);
 		}
 		
-		img{
+		.first{
 			display: block;
 			margin:auto;
 			height: auto;
 			width: 1200px;
+		}
+		.diff{
+			display: block;
+			margin:auto;
+			height: auto;
+			width: 300px;
 		}
 		
 		#callout{
@@ -144,7 +161,7 @@
 				</div> -->
 				
 				<header>
-					<img src="logo3.jpg" width="500" height ="auto" alt="Image to LaTex converter" title="Image to LaTex converter"/> 
+					<img src="logo7.jpg" width="500" height ="auto" alt="Image to LaTex converter" title="Image to LaTex converter" class="first" />
 				</header>
 				<br>
 				<nav>
@@ -191,7 +208,7 @@
 				<br>
 				<h2><b> Block Diagram</b></h2>
 					<div class="therapy">
-						<img src="blockDiagram3.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
+						<img src="blockDiagram3.jpg" alt="Block Diagram" title="Image to LaTex converter" class="first"/> 
 					</div>
 				
 				<p>
@@ -213,7 +230,7 @@
 				</p>
 				<div class="section">
 					<h2><b>Pre-processing</b></h2>
-					<img src="preProcessing2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
+					<img src="preProcessing2.jpg" alt="Block Diagram" title="Image to LaTex converter" class="first"/> 
 					<p align="justify">
 					<b>Canny edges:</b> Edges present in the image are found using canny edge detection technique. <br>
 					<b>Hough transform:</b> The lines corresponding to the clip-board boundary are determined from these edges using Hough transformation.<br>
@@ -227,7 +244,7 @@
 				
 				<div class="section">
 					<h2><b>Classification</b></h2>
-					<img src="classification2.jpg" alt="Block Diagram" title="Image to LaTex converter"/> 
+					<img src="classification2.jpg" alt="Block Diagram" title="Image to LaTex converter" class="first"/> 
 					<p>
 					Canny edges: Edges present in the image are found using canny edge detection technique. 
 					</p>
@@ -257,17 +274,61 @@
 							<h4><b>SVM</b></h4>
 							<p>We train a linear SVM on conventional HOG features.</p>
 							
-							<h4><b>CNN</b></h4>
-							<p>We train a Conv neural network[1] with three convolutional layers followed by two linear layers to perform a #class-way classification.We use dropout regularization[2] and conventional SGD to train the network. We use torch (hyper link) to train all models.</p>
 							
-							<h4><b>Place Holder</b></h4>
-							<p>vajdovoiavjaio; </p>
+							
+<h4><b>Convolution Neural Network (CNN)</b></h4>
+<p>We trained a CNN [1] with 3 convolution layers and 2 linear layers. This included dropout regularization [2] and stochastic gradient descent method.</p>
+
+<p>
+<span>Dropouts:</span> With CNN overfitting seems to be a problem which may reduce accuracy. We used &lsquo;drop-out&rsquo; method to avoid overfitting. In this technique we set the output of each hidden node to 0.5 randomly and train the classifier. When the output of a node is &lsquo;0&rsquo;, it does not participate either in feed forward or the backward propagation path. This forces the other nodes to learn more complicated and generalised feature instead of relying on the presence of a previous node to give it a certain input. The propagation path takes a different path in every pass and this helps in making the nodes non-specialized for the classification. This has a downside that the training time increases roughly by twice but helps increase test accuracy by not overfitting the nodes. During the testing stage, no nodes are dropped, so to compensate for the increased node count as compared to training stage, we weigh the output of each node by half to get the final output. The training was done on GPUs and it took approximately four hours.</p>
+
+<p><span">Stochastic Gradient Descent:</span> This technique is used to update the weights of the nodes. This is helpful because, using a gradient descent would need entire dataset to be in the memory at a time while calculating the gradient. But here we pick a random data member and compute the gradient and update the weights accordingly. The weights are updated in the direction of the gradient of the loss function. The update process converges when the weights value do not change any more. It has been shown that stochastic gradient descent can converge faster in some cases when compared to the normal gradient descent and also it achieves the global minimum.</p>
+<p style="text-align: justify;">&nbsp;</p>
 
 						<h3><b>Testing</b></h3>
-						<p>We tested in two ways, first using the training data and then on the real time data. We used 90% of the data to train the classifer and 10% of the data to test the accuracy of the classifier. The results of this testing is presented in the results section.<br>
-						To do real time testing, we implemented the following two methods, <br>
-						1. Webcam in the laptop to capture the image<br>
-						2. Built an html canvas page where we can write the equation using mouse (source code of this is in the canvas tab). We created a custom sctipt to take a screen shot of the drawn image and send it to matlab.</p>
+						<p>
+						
+						Testing is divided in to following,</p>
+<h4><b>I.	Testing only the Classifier Performance:</b></h4> 
+<p><tab2>Here the performance of SVM/CNN classifiers are measured by providing the images of the symbol from the dataset as input. This gives classification accuracy for the existing dataset.</p>
+<h4><b>II.	Testing Im2Latex System</b></h4>
+<p>Second part of testing involves taking an image of mathematical equation written on a board or editor and then feed to Im2Latex System as input. In real world this would be the use case. The entire flow from capturing image to latex output is explained below. </p> 
+<p><b>1. Input:</b><br><br>
+The input to Im2Latex system is an image consisting of a mathematical equation. We have implemented two mechanisms for input image capturing, i.e. through webcam and another way is by taking snapshot of drawing written in an editor. For the first method, where webcam is used, the user takes in a picture of handwritten equation. The capturing of image and further processing is integrated within MATLAB. For the second case, a screen snapshot of a drawing editor is taken and is processed in MATLAB. </p>
+<p><b>2.	Image Rectification:</b><br><br>
+When the input image to the system is from a webcam, then most of the  times there would be perspective distortion, i.e image is not in perpendicular upright view. If this image is directly fed to symbol extraction and classification, the symbols would be distorted and leads to misclassification. Hence we do perspective correction by using Homography technique.  The details of the pre-processing to remove perspective distortion is discussed below.<br><br>
+•	We consider that mathematical equations are written on a white board or a paper with rectangular boundary. So the technique to correct perspective distortion would be to find the rectangular corners of the board or paper. If the image has perspective distortion, then geometrically these would not be corners of a rectangle. Our next step would be to get an approximation of these corners which would actually fit corners of a rectangle. This is done by considering the highest dimensions(length/breadth) of the distorted rectangle. To determine the corners of the rectangle we use Hough Transform to find horizontal and vertical line segments in an image. The intersection of horizontal and vertical lines would be considered as rectangle corners.<br><br>
+
+•	One we know the mapping of corners between distorted rectangle and a geometrically correct rectangle, we determine the Homography Matrix which can be solved with 4 corresponding pairs of x,y coordinates.<br><br>
+•	The homography transform is applied to entire image to remove the perspective distortion. Output of this step would be an image which looks like image captured from upright perpendicular view.</p>
+<img src="homography.jpg"  class="diff"/> 
+					
+
+<p><b>3.	Text Region Identification:</b><br><br>
+It is important to get the region where text is present in an image. This is needed for robust binarization which will be discussed further. To extract the region of text, we find harris corners and estimate is centroid of the corner positions. Text portion is extracted by cropping image around harris corner centroid with 2-3 standard deviation in x and y direction.</p>
+
+<p><b>4.	Binarization and Segmentation:</b><br><br>
+The image containing text is then binarized by choosing automated threshold. Segmentation is done with the help of connected components. Connected component analysis takes in input text image and gives out a label matrix where the pixel belong to particular letter/symbols would get the same labels. Next a bounding box is drawn across each symbols and each symbol is extracted and resized to 64x64 image.</p>
+
+<p><b>5.	Classification:</b><br><br>
+
+Once each symbol is extracted as 64x64 image, it needs to be classified to a particular latex symbol category. In case of SVM, Histogram of Orientation(HOG) features are extracted and then these features are sent to classifier. In case of a CNN classifier, symbol image is directly fed as input for classification. This is because of the ability of CNN to extract features by itself.</p>
+
+<p><b>6.LaTex Mapping:</b><br><br>
+
+The output of the classification would be class labels to which the input symbol belongs. In this experiment we have total of 57 Latex Symbols trained. These labels are then used to generate a Latex code with the help of a look up table. </p>
+
+<p><b>7.	Final Ouput:</b><br><br>
+Once the Latex code is generated, it is sent to Latex compiler and the output is displayed as  a Latex document which contains the mathematical equation translated to LaTex standard.</p>
+
+
+
+
+						
+						
+						
+						
+						</p>
 
 							
 							
@@ -318,6 +379,9 @@
 						</p>
 					</div>
 
+					<div>
+						<p> Wall paper credits: http://wallpapersafari.com/w/2WXiwe/</p>
+					</div>
 					<div class="section"
 						<ul>
 						<!--	<li><a href = "https://www.vt.edu"><img src="vt.jpg" alt="VT" title="Image to LaTex converter"/ class="VT_Logo" ></li> -->
